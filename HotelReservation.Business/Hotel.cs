@@ -18,10 +18,7 @@ namespace HotelReservation
                     throw new ArgumentException("Null Value for Regular Customer");
                 _regularCustomer = value;
             }
-            get
-            {
-                return _regularCustomer;
-            }
+          
         }
         private Customer RewardsCustomer
         {
@@ -31,10 +28,7 @@ namespace HotelReservation
                     throw new ArgumentException("Null Value for Rewards Customer");
                 _rewardsCustomer = value;
             }
-            get
-            {
-                return _rewardsCustomer;
-            }
+
         }
 
         private int HotelRating { set; get; }
@@ -59,9 +53,9 @@ namespace HotelReservation
             switch (customerType)
             {
                 case CustomerType.Regular:
-                    return RegularCustomer.GetCustomerHotelRateByDate(rateOfDate);
+                    return _regularCustomer.GetCustomerHotelRateByDate(rateOfDate);
                 default:
-                    return RewardsCustomer.GetCustomerHotelRateByDate(rateOfDate);
+                    return _rewardsCustomer.GetCustomerHotelRateByDate(rateOfDate);
             }
         }
 
@@ -70,9 +64,9 @@ namespace HotelReservation
             switch (customerType)
             {
                 case CustomerType.Regular:
-                    return RegularCustomer.GetCustomerHotelRateByDayOfWeek(rateOfDayOfWeek);
+                    return _regularCustomer.GetCustomerHotelRateByDayOfWeek(rateOfDayOfWeek);
                 default:
-                    return RewardsCustomer.GetCustomerHotelRateByDayOfWeek(rateOfDayOfWeek);
+                    return _rewardsCustomer.GetCustomerHotelRateByDayOfWeek(rateOfDayOfWeek);
             }
         }
 

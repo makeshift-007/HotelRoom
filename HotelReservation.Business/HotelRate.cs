@@ -3,13 +3,13 @@ namespace HotelReservation
 {
     public class HotelRate
     {
-        private int WeekDayRate { set; get; }
-        private int WeekEndRate { set; get; }
+        private int _weekDayRate;
+        private int _weekEndRate;
 
         public HotelRate(int weekDayRate, int weekEndRate)
         {
-            this.WeekDayRate = weekDayRate;
-            this.WeekEndRate = weekEndRate;
+            this._weekDayRate = weekDayRate;
+            this._weekEndRate = weekEndRate;
         }
 
         /// <summary>
@@ -23,9 +23,9 @@ namespace HotelReservation
             {
                 case DayOfWeek.Saturday:
                 case DayOfWeek.Sunday:
-                    return WeekEndRate;
+                    return _weekEndRate;
                 default:
-                    return WeekDayRate;
+                    return _weekDayRate;
             }
         }
 

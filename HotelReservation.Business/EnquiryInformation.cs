@@ -8,7 +8,7 @@ namespace HotelReservation
 {
     public class EnquiryInformation
     {
-        private CustomerType CustomerType { set; get; }
+        private readonly CustomerType _customerType;
         private List<DateTime> _datesOfReservation;
 
         private List<DateTime> DatesOfReservation
@@ -19,23 +19,23 @@ namespace HotelReservation
                     throw new ArgumentException("Dates of Reservation Cannot be Null");
                 _datesOfReservation = value;
             }
-            get { return _datesOfReservation; }
+           
         }
 
         public EnquiryInformation(CustomerType customerType, List<DateTime> dateOfReservation)
         {
-            this.CustomerType = customerType;
+            this._customerType = customerType;
             this.DatesOfReservation = dateOfReservation;
         }
 
         public CustomerType GetCustomerType()
         {
-            return CustomerType;
+            return _customerType;
         }
 
         public List<DateTime> GetDatesOfReservation()
         {
-            return DatesOfReservation;
+            return _datesOfReservation;
         }
     }
 }

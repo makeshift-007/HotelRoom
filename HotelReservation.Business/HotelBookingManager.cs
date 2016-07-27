@@ -19,7 +19,7 @@ namespace HotelReservation
                 _hotels = value;
 
             }
-            get { return _hotels; }
+          
         }
 
         public HotelBookingManager(List<Hotel> hotels)
@@ -43,7 +43,7 @@ namespace HotelReservation
             int lowestRateSummation = int.MaxValue;
             int currentLowestRateSummation;
 
-            foreach (var hotel in Hotels)
+            foreach (var hotel in _hotels)
             {
                 currentLowestRateSummation = GetSummationOfReservationDates(hotel, enquiry.GetDatesOfReservation(), enquiry.GetCustomerType());
 

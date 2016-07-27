@@ -21,25 +21,25 @@ namespace HotelReservation
                 }
                 _hotelRate = value;
             }
-            get { return _hotelRate; }
         }
-        private CustomerType CustomerType { set; get; }
+
+        private CustomerType _customerType;
 
 
         public Customer(CustomerType customerType,HotelRate hotelRate)
         {
             this.HotelRate = hotelRate;
-            this.CustomerType = customerType;
+            this._customerType = customerType;
         }
 
         public int GetCustomerHotelRateByDate(DateTime rateOnDate)
         {
-            return HotelRate.GetRateByDate(rateOnDate);
+            return _hotelRate.GetRateByDate(rateOnDate);
         }
 
         public int GetCustomerHotelRateByDayOfWeek(DayOfWeek rateOnDayOfWeek)
         {
-            return HotelRate.GetRateByDayOfWeek(rateOnDayOfWeek);
+            return _hotelRate.GetRateByDayOfWeek(rateOnDayOfWeek);
         }
     }
 
