@@ -6,14 +6,26 @@ namespace HotelReservation
 {
     public class EnquiryParser
     {
-        public EnquiryInformation GetEnquiryByInput(string enquiry)
+        public Enquiry GetEnquiryByInput(string enquiry)
         {
             if (string.IsNullOrEmpty(enquiry))
                 throw new ArgumentException("Input Cant be Null or Empty");
 
             ValidateInput(enquiry);
             var customerTypeAndReservationDates = GetCustomerTypeAndReservationDates(enquiry);
-            return new EnquiryInformation(GetCustomerType(customerTypeAndReservationDates[0]), GetReservationDates(customerTypeAndReservationDates[1]));
+
+            switch (customerTypeAndReservationDates[0])
+            {
+                case "Regular":
+                    return new RegularCustomerEnquiry(GetReservationDates(customerTypeAndReservationDates[1]));
+                case "Rewards":
+                    return new RewardCustomerEnquiry(GetReservationDates(customerTypeAndReservationDates[1]));
+                default:
+                    throw new ArgumentException("Invalid Input");
+
+            }
+            
+            //return new Enquiry(GetCustomerType(customerTypeAndReservationDates[0]), GetReservationDates(customerTypeAndReservationDates[1]));
 
         }
 
@@ -48,17 +60,6 @@ namespace HotelReservation
             return reservationDates;
         }
 
-        private CustomerType GetCustomerType(string customerType)
-        {
-            switch (customerType)
-            {
-                case "Regular":
-                    return CustomerType.Regular;
-                case "Rewards":
-                    return CustomerType.Rewards;
-                default:
-                    throw new ArgumentException("Invalid Customer Type Supplied");
-            }
-        }
+     
     }
 }

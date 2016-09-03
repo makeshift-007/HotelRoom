@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,30 +6,34 @@ using System.Threading.Tasks;
 
 namespace HotelReservation
 {
-    public class HotelsProvider
+
+    public interface IHotelProvider
     {
-        private List<Hotel> _hotels;
-        public HotelsProvider()
+
+        List<HotelInformation> GetRewardCustomerHotels();
+        List<HotelInformation> GetRegularCustomerHotels();
+    }
+
+
+    public class HotelsProvider : IHotelProvider
+    {
+
+
+        public List<HotelInformation> GetRewardCustomerHotels()
         {
-            _hotels = new List<Hotel>();
-
-            _hotels.Add(new Hotel("Lakewood", 3,
-                new Customer(CustomerType.Regular, new HotelRate(110, 90)),
-                new Customer(CustomerType.Rewards, new HotelRate(80, 90))));
-
-            _hotels.Add(new Hotel("Bridgewood", 4,
-               new Customer(CustomerType.Regular, new HotelRate(160, 60)),
-               new Customer(CustomerType.Rewards, new HotelRate(110, 50))));
-
-            _hotels.Add(new Hotel("Ridgewood", 5,
-               new Customer(CustomerType.Regular, new HotelRate(220, 150)),
-               new Customer(CustomerType.Rewards, new HotelRate(100, 40))));
-
+            return new List<HotelInformation>{
+                new HotelInformation("Lakewood", 3,80,90),
+                new HotelInformation("Bridgewood", 4,110,50),
+                new HotelInformation("Ridgewood", 5,100,40)
+            };
         }
-
-        public List<Hotel> GetHotels()
+        public List<HotelInformation> GetRegularCustomerHotels()
         {
-            return _hotels;
+            return new List<HotelInformation>{
+                new HotelInformation("Lakewood", 3,110,90),
+                new HotelInformation("Bridgewood", 4,160,60),
+                new HotelInformation("Ridgewood", 5,220,150)
+            };
         }
     }
 }

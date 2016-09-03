@@ -12,12 +12,12 @@ namespace HotelReservation.Console
         static void Main(string[] args)
         {
 
-            var hotelManager = new HotelBookingManager(new HotelsProvider().GetHotels());
-            var enquiryParser = new EnquiryParser();
+         var enquiryParser = new EnquiryParser();
 
             foreach (var input in GetInputs())
             {
-                System.Console.WriteLine(hotelManager.GetCheapestHotelByEnquiry(enquiryParser.GetEnquiryByInput(input)));
+                var enquiry = enquiryParser.GetEnquiryByInput(input);
+                System.Console.WriteLine(enquiry.GetCheapestHotel());
             }
 
             System.Console.Read();

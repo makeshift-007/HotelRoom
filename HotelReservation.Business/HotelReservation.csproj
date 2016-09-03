@@ -39,15 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer.cs" />
-    <Compile Include="CustomerType.cs" />
-    <Compile Include="HotelBookingManager.cs" />
-    <Compile Include="HotelRate.cs" />
-    <Compile Include="Hotel.cs" />
-    <Compile Include="EnquiryInformation.cs" />
+    <Compile Include="Enquiry.cs" />
     <Compile Include="EnquiryParser.cs" />
+    <Compile Include="HotelInformation.cs" />
     <Compile Include="HotelsProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReservationDate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
